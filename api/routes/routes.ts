@@ -1,7 +1,10 @@
-import * as bodyParser from "body-parser";
-import * as express from "express";
+import  bodyParser from "body-parser";
+import express from "express";
 import { Logger } from "../logger/logger";
 import User from "./user";
+import Adapters from "./Adapters";
+import Stations from "./Stations";
+import ComparisonMap from "./ComparisonMap";
 
 class Routes {
 
@@ -28,7 +31,11 @@ class Routes {
 
         // user route
         this.express.use("/", User);
+        this.express.use('/adapters', Adapters)
+        this.express.use('/stations', Stations)
+        this.express.use('/comparison-map', ComparisonMap)
     }
 }
 
 export default new Routes().express;
+
